@@ -2,19 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/tab_list"
-        android:enabled="true"
         android:icon="@drawable/ic_list"
-        android:title="내역"/>
-
+        android:enabled="true"
+        android:title="list" />
     <item
         android:id="@+id/tab_chart"
-        android:enabled="true"
         android:icon="@drawable/ic_chart"
-        android:title="분석"/>
-
+        android:enabled="true"
+        android:checked="true"
+        android:title="home" />
     <item
         android:id="@+id/tab_setting"
-        android:enabled="true"
         android:icon="@drawable/ic_setting"
-        android:title="설정"/>
+        android:enabled="true"
+        android:title="user" />
 </menu>
