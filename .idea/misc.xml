@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Users/goh06/AndroidStudioProjects/Sori_Consumption-Report-App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1965" />
         <entry key="..\:/Users/goh06/AndroidStudioProjects/Sori_Consumption-Report-App/app/src/main/res/drawable/btm_navi_icon_color.xml" value="0.1965" />
         <entry key="..\:/Users/goh06/AndroidStudioProjects/Sori_Consumption-Report-App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1965" />
         <entry key="..\:/Users/goh06/AndroidStudioProjects/Sori_Consumption-Report-App/app/src/main/res/layout/activity_main.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/goh06/AndroidStudioProjects/Sori_Consumption-Report-App/app/src/main/res/menu/btm_navi_menu.xml" value="0.27239583333333334" />
         <entry key="..\:/Users/goh06/AndroidStudioProjects/Sori_Consumption-Report-App/app/src/main/res/menu/btm_navi_menu_item.xml" value="0.203515625" />
+=======
+        <entry key="..\:/Users/user/Documents/workspaces/github/dev_sy/Sori_Consumption-Report-App/app/src/main/res/layout/activity_main.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/user/Documents/workspaces/github/dev_sy/Sori_Consumption-Report-App/app/src/main/res/layout/fragment_list.xml" value="0.1766304347826087" />
+        <entry key="..\:/Users/user/Documents/workspaces/github/dev_sy/Sori_Consumption-Report-App/app/src/main/res/layout/fragment_setting.xml" value="0.1766304347826087" />
+>>>>>>> 901b21ef936bf9cf4f44ab0e2516550739d5ac7a
         <entry key="app/src/main/res/drawable/btm_navi_icon_color.xml" value="0.4715" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/btm_navi_menu.xml" value="0.26393110435663625" />
