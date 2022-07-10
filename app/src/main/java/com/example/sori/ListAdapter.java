@@ -14,16 +14,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
     private ArrayList<String> dataSet;
 
-    public ListAdapter() {
-        dataSet = new ArrayList<>();
+    // 생성자를 통해서 데이터를 전달받도록 한다.
+    public ListAdapter(ArrayList<String> dataSet) {
+        this.dataSet = dataSet;
     }
 
-    // 데이터를 입력
-    public void setArrayData(String strData) {
-        dataSet.add(strData);
-    }
-
-    //===== 뷰홀더 클래스 =====================================================
+    // ViewHolder Class를 선언한다.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textView;
         public ViewHolder(@NonNull View itemView) {
@@ -34,17 +30,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
             return textView;
         }
     }
-    //========================================================================
 
-    //----- 생성자 --------------------------------------
-    // 생성자를 통해서 데이터를 전달받도록 함
-    public ListAdapter (ArrayList<String> dataSet) {
-        this.dataSet = dataSet;
-    }
-    //--------------------------------------------------
-
+    // ViewHolder 객체를 생성하여 리턴한다.
     @NonNull
-    @Override   // ViewHolder 객체를 생성하여 리턴한다.
+    @Override
     public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list, parent, false);
@@ -53,13 +42,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         return viewHolder;
     }
 
-    @Override   // ViewHolder안의 내용을 position에 해당되는 데이터로 교체한다.
+    // ViewHolder 안에 있는 내용을 position에 해당되는 데이터로 교체한다.
+    @Override
     public void onBindViewHolder(@NonNull ListAdapter.ViewHolder holder, int position) {
         String text = dataSet.get(position);
         holder.textView.setText(text);
     }
 
-    @Override   // 전체 데이터의 갯수를 리턴한다.
+    // 데이터를 입력한다.
+    public void setArrayData(String strData) {
+        dataSet.add(strData);
+    }
+
+    // 전체 데이터의 갯수를 리턴한다.
+    @Override
     public int getItemCount() {
         return dataSet.size();
     }
