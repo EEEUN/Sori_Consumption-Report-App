@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Sori</string>
-    <!-- TODO: Remove or change this placeholder text -->
 
+    <string name="list">소비내역</string>
+    <string name="chart">소비분석</string>
+    <string name="setting">설정</string>
 </resources>

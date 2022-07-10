@@ -3,10 +3,16 @@ package com.example.sori;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,8 +20,13 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 
-// 은서 작업란
 public class ListFragment extends Fragment {
+
+    private final ArrayList<String> dataset = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private ListAdapter mAdapter;
+
+    ViewGroup viewGroup;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +71,23 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
+
+        recyclerView = view.findViewById(R.id.list_recyceler_view);
+        recyclerView.setHasFixedSize(true);
+        mAdapter = new ListAdapter(dataset);
+        for (int i = 0; i < 100; i++) {
+            String str = i + "번째 아이템";
+            mAdapter.setArrayData(str);
+        }
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+
+        return view;
     }
 }
