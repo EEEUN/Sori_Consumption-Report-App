@@ -2,18 +2,18 @@ package com.example.sori;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
+import com.example.sori.chart.ChartFragment;
+import com.example.sori.list.ListFragment;
+import com.example.sori.setting.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,13 +51,31 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                     case R.id.tab_setting: {
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.home_ly, new SettingFragment())
-                                .commit();
+                        PreferenceSettings();
                         return true;
                     }
                 }
                 return false;
+            }
+        });
+    }
+
+    // PreferenceFragment
+    private void PreferenceSettings() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.home_ly, new SettingFragment())
+                .commit();
+
+        SharedPreferences setting;
+        setting = PreferenceManager.getDefaultSharedPreferences(this);
+        setting.registerOnSharedPreferenceChangeListener((sp, key) -> {
+            Log.d("tag", "클릭된 Preference의 key는 " + key);
+
+            if (sp.getBoolean(key, false)) {
+                Log.d("@@@", key + " on");
+            } else {
+                Log.d("@@@", key + " off");
             }
         });
     }

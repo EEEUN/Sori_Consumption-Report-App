@@ -1,4 +1,4 @@
-package com.example.sori;
+package com.example.sori.chart;
 
 import android.os.Bundle;
 
@@ -8,10 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.sori.R;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ChartFragment#newInstance} factory method to
  * create an instance of this fragment.
+ */
+
+/*
+ * 막대 그래프[2] or 원 그래프[1] (만약 시간이 남을 경우, 둘 다 넣는 걸로)
+ * 그래프 형태 변환 : 왼쪽 상단에 '__ 그래프로 보기' (나중에)
+ * 카테고리별(?개) 소비 - 원 그래프로 (UI, 리스트 - 리사이클러뷰) : 쇼핑, 식비, 취미 (일단은 세 개로)
+ * UI만 만들 것
  */
 public class ChartFragment extends Fragment {
 
