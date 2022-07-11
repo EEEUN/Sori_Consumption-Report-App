@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:layout="@layout/preference_custom"
+        app:key="setting"
+        app:title="설정">
+
+        <SwitchPreference
+            app:key="Dark Mode"
+            app:title="다크모드" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

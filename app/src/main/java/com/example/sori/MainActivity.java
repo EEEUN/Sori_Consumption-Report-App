@@ -2,8 +2,11 @@ package com.example.sori;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
@@ -46,13 +49,31 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                     case R.id.tab_setting: {
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.home_ly, new SettingFragment())
-                                .commit();
+                        PreferenceSettings();
                         return true;
                     }
                 }
                 return false;
+            }
+        });
+    }
+
+    // PreferenceFragment
+    private void PreferenceSettings() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.home_ly, new SettingFragment())
+                .commit();
+
+        SharedPreferences setting;
+        setting = PreferenceManager.getDefaultSharedPreferences(this);
+        setting.registerOnSharedPreferenceChangeListener((sp, key) -> {
+            Log.d("tag", "클릭된 Preference의 key는 " + key);
+
+            if (sp.getBoolean(key, false)) {
+                Log.d("@@@", key + " on");
+            } else {
+                Log.d("@@@", key + " off");
             }
         });
     }
