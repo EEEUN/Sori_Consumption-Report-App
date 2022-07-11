@@ -1,4 +1,4 @@
-package com.example.sori;
+package com.example.sori.setting;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import androidx.preference.PreferenceFragmentCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.sori.R;
 
 /*
  * !! preference 사용해서 구현, 다크모드 구현 중요!(앱 종료 시 설정 유지)

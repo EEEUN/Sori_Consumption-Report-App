@@ -1,4 +1,4 @@
-package com.example.sori;
+package com.example.sori.chart;
 
 import android.os.Bundle;
 
@@ -8,14 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.sori.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ListFragment#newInstance} factory method to
+ * Use the {@link ChartFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 
-// 은서 작업란
-public class ListFragment extends Fragment {
+/*
+ * 막대 그래프[2] or 원 그래프[1] (만약 시간이 남을 경우, 둘 다 넣는 걸로)
+ * 그래프 형태 변환 : 왼쪽 상단에 '__ 그래프로 보기' (나중에)
+ * 카테고리별(?개) 소비 - 원 그래프로 (UI, 리스트 - 리사이클러뷰) : 쇼핑, 식비, 취미 (일단은 세 개로)
+ * UI만 만들 것
+ */
+public class ChartFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +33,7 @@ public class ListFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ListFragment() {
+    public ChartFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +43,11 @@ public class ListFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ListFragment.
+     * @return A new instance of fragment ChartFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListFragment newInstance(String param1, String param2) {
-        ListFragment fragment = new ListFragment();
+    public static ChartFragment newInstance(String param1, String param2) {
+        ChartFragment fragment = new ChartFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +68,6 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        return inflater.inflate(R.layout.fragment_chart, container, false);
     }
 }

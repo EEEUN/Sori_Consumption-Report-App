@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/popup_list"
+        android:title="리스트" />
+    <item
+        android:id="@+id/popup_calendar"
+        android:title="캘린더" />
+</menu>
