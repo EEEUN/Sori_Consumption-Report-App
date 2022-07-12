@@ -18,5 +18,7 @@
         android:layout_height="56dp"
         app:menu="@menu/btm_navi_menu_item"
         app:itemBackground="@android:color/white"
+        app:itemIconTint="@drawable/navi_selector_color"
+        app:itemTextColor="@drawable/navi_selector_color"
         app:layout_constraintBottom_toBottomOf="parent" />
 </LinearLayout>

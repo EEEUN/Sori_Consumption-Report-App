@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".list.ListFragment">
 
     <FrameLayout
@@ -12,34 +13,23 @@
         android:layout_margin="10dp">
 
         <TextView
-            android:id="@+id/view_form_popup"
-            android:layout_width="70dp"
-            android:layout_height="25dp"
-            android:textColor="@color/gray"
-            android:layout_gravity="start|center"
-            android:gravity="start|center"
-            android:layout_marginStart="10dp"
-            android:textSize="15dp"
-            android:text="리스트▼" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/black"
-            android:text="수입/지출" />
+            android:text="@string/income_and_expense" />
 
         <TextView
             android:id="@+id/date_popup"
             android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:textColor="@color/gray"
             android:layout_gravity="end|center"
             android:gravity="end|center"
-            android:layout_marginEnd="10dp"
-            android:textSize="15dp"
-            android:text="이번 연도▼" />
+            android:layout_marginEnd="15dp"
+            android:textSize="15sp"
+            android:text="@string/whole_list" />
     </FrameLayout>
 
     <RelativeLayout
@@ -56,27 +46,27 @@
             android:id="@+id/income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="수입 :"
+            android:text="@string/whole_list_income"
             android:textColor="@color/black"
-            android:textSize="17dp" />
+            android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/outcome"
+            android:id="@+id/expense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/income"
-            android:text="지출 :"
+            android:text="@string/whole_list_expense"
             android:textColor="@color/black"
-            android:textSize="17dp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/outcome"
-            android:text="총 잔액 :"
+            android:layout_below="@id/expense"
+            android:text="@string/list_balance"
             android:textColor="@color/black"
-            android:textSize="17dp" />
+            android:textSize="17sp" />
     </RelativeLayout>
 
 
@@ -85,4 +75,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/list_balance" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/list_add_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@color/white"
+            app:fabSize="normal"
+            android:contentDescription="@string/list_add"
+            android:layout_margin="20dp" />
+    </FrameLayout>
 </RelativeLayout>
