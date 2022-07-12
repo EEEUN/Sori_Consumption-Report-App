@@ -1,5 +1,8 @@
 package com.example.sori.list;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,54 +14,64 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sori.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListFragment extends Fragment {
+public class ListFragment extends Fragment implements View.OnClickListener {
 
-    private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
+    private final RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
     private RecyclerView recyclerView;
     private ListAdapter listAdapter;
-    private TextView viewPopup, datePopup;
+    private TextView datePopup;
+    private FloatingActionButton addButton;
+    private Dialog addDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        viewPopup = view.findViewById(R.id.view_form_popup);
         datePopup = view.findViewById(R.id.date_popup);
         recyclerView = view.findViewById(R.id.list_recyceler_view);
+        addButton = view.findViewById(R.id.list_add_button);
 
-        // about RecyclerView
-        recyclerView.setHasFixedSize(true);
-        listAdapter = new ListAdapter(buildItemList());
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(listAdapter);
-        recyclerView.setRecycledViewPool(viewPool);
 
-        viewPopup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showPopupMenu(viewPopup);
-            }
-        });
+        addDialog = new Dialog(getActivity());
+        addDialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        addDialog.setContentView(R.layout.list_add_dialog);
 
-        datePopup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showPopupMenu(datePopup);
-            }
-        });
+//        // about RecyclerView
+//        recyclerView.setHasFixedSize(true);
+//        listAdapter = new ListAdapter(buildItemList());
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView.setAdapter(listAdapter);
+//        recyclerView.setRecycledViewPool(viewPool);
+
+        datePopup.setOnClickListener(this);
+        addButton.setOnClickListener(this);
 
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.date_popup:
+                showPopupMenu(datePopup);
+                break;
+            case R.id.list_add_button:
+                showDialog();
+                break;
+        }
     }
 
     // 상위아이템 큰박스 아이템을 10개 만듭니다. (내역추가 기능 추가 시 삭제 예정)
@@ -83,22 +96,6 @@ public class ListFragment extends Fragment {
 
     private void showPopupMenu(View view) {
         final PopupMenu popupMenu = new PopupMenu(getActivity().getApplicationContext(), view);
-        if(view == viewPopup) {
-            popupMenu.getMenuInflater().inflate(R.menu.list_viewform_popup, popupMenu.getMenu());
-            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
-                    if (menuItem.getItemId() == R.id.popup_list) {
-                        Toast.makeText(getActivity().getApplicationContext(), "리스트", Toast.LENGTH_SHORT).show();
-                        // 리스트뷰로 전환
-                    } else {
-                        Toast.makeText(getActivity().getApplicationContext(), "캘린더", Toast.LENGTH_SHORT).show();
-                        // 캘린더뷰로 전환
-                    }
-                    return false;
-                }
-            });
-        } else {
             popupMenu.getMenuInflater().inflate(R.menu.list_date_popup, popupMenu.getMenu());
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
@@ -124,7 +121,20 @@ public class ListFragment extends Fragment {
                     }
                 }
             });
-        }
         popupMenu.show();
+    }
+
+    private void showDialog() {
+        addDialog.show();
+        addDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        // 기능 넣기
+
+        addDialog.findViewById(R.id.no_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addDialog.dismiss();
+            }
+        });
     }
 }
